@@ -1,1 +1,405 @@
 /* You can add global styles to this file, and also import other style files */
+
+.no-select {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
+	/* Non-prefixed version, currently
+									 supported by Chrome, Edge, Opera and Firefox */
+}
+
+#app-youtube .container {
+	max-width: 900px;
+}
+
+#app-youtube .title-app {
+	font-size: 21px;
+	color: #787878;
+}
+
+#app-youtube .search-box {
+	max-width: 500px;
+	z-index: 100;
+}
+
+#app-youtube .fx1 {
+	flex: 1;
+}
+
+#app-youtube .search-box .btn svg {
+	fill: #fff;
+}
+
+#app-youtube .search-box .btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-size: 200% auto;
+	border: 0;
+}
+
+.btn-grad {
+	transition: 0.5s;
+}
+
+.btn-grad:hover {
+	background-position: right center;
+	color: #fff;
+	text-decoration: none;
+}
+
+#app-youtube .search-box .btn-grad-search {
+	background-image: linear-gradient(to right, #457fca 0%, #5691c8 51%, #457fca 100%);
+	min-width: 80px;
+}
+
+#app-youtube .search-box .btn-grad-close {
+	background-image: linear-gradient(to right, #f85032 0%, #e73827 51%, #f85032 100%)
+}
+
+#app-youtube .popup-suggest {
+	width: 100%;
+	left: 0;
+	top: 42px;
+}
+
+#app-youtube .suggest-item {
+	padding: 6px 14px;
+	cursor: pointer
+}
+
+#app-youtube .suggest-item:hover {
+	background-color: #efefef;
+}
+
+#app-youtube .suggest-item + .suggest-item {
+	border-top: 1px solid #efefef;
+}
+
+#app-youtube .search-results {
+}
+
+#app-youtube .search-results a {
+	color: #555;
+	text-decoration: unset;
+}
+
+#app-youtube .search-results a.link-result + a.link-result .search-result {
+	margin-top: 24px;
+}
+
+#app-youtube .search-results .search-result {
+	position: relative;
+	border-radius: 12px;
+	overflow: hidden;
+	flex-direction: column;
+	margin-top: 30px;
+}
+
+#app-youtube .search-results .search-result .details {
+	padding: 7px 17px;
+}
+
+#app-youtube .search-results .search-result .img .thumb img {
+	width: 100%
+}
+
+
+#app-youtube .search-results .search-result .title {
+	font-size: 1rem;
+	margin-bottom: 4px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+#app-youtube .search-results .search-result .info {
+	display: none;
+}
+
+#app-youtube .search-results .search-result .owner .owner-thumb img {
+	width: 40px;
+	border-radius: 50%
+}
+
+#app-youtube .search-results .search-result .owner .owner-details {
+	margin-left: 9px;
+}
+
+#app-youtube .search-results .search-result .owner .owner-details .title {
+	margin: 0;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+@media (min-width: 768px) {
+	#app-youtube .search-results .search-result {
+		flex-direction: row;
+	}
+
+	#app-youtube .search-results .search-result .img .thumb img {
+		width: 246px
+	}
+
+	#app-youtube .search-results .search-result {
+		border-radius: unset;
+	}
+
+	#app-youtube .search-results .search-result .title {
+		font-size: 1.1rem;
+		white-space: unset;
+	}
+
+	#app-youtube .search-results .search-result .info {
+		display: block;
+	}
+}
+
+
+.btn-grad.download {
+	background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA 51%, #1FA2FF 100%)
+}
+
+.btn-grad.view {
+	background-image: linear-gradient(to right, #FF512F 0%, #DD2476 51%, #FF512F 100%)
+}
+
+.btn-grad {
+	min-width: 69px;
+	max-width: 200px;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border-radius: 10px;
+	display: block;
+}
+
+.btn-grad:hover {
+	box-shadow: 0 1px 5px rgb(0 0 0 / 26%), 0 2px 15px rgb(0 0 0 / 26%);
+	background-position: right center;
+	color: #fff;
+	text-decoration: none;
+}
+
+#youtube-watch .container-watch {
+	max-width: 1111px;
+	margin: 0 auto;
+}
+
+/*BEGIN PALYER CSS*/
+#youtube-watch #player-container {
+	margin: -1rem -1rem 20px;
+	padding-top: calc(0.6 * 100%);
+	height: 0 !important;
+}
+
+#youtube-watch #player-container .red-player-c {
+	padding-top: calc(0.56338 * 100%);
+	background: #000;
+	height: 0 !important;
+}
+
+#youtube-watch #player-container .red-player-c .poster {
+	padding-top: calc(0.56338 * 100%);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#youtube-watch #player-container .red-player-c .control-container {
+	background: rgb(0 0 0 / 51%);
+}
+
+#youtube-watch #player-container .red-player-c .top-control {
+}
+
+#youtube-watch #player-container .red-player-c .center-control {
+}
+
+#youtube-watch #player-container .red-player-c .bottom-control {
+	position: absolute;
+	bottom: 0;
+}
+
+#youtube-watch #player-container .red-player-c .bottom-control .time-info {
+	font-size: 11px;
+	color: #ffffff;
+	text-shadow: 0 1px 4px rgb(0 0 0 / 63%);
+}
+
+#youtube-watch #player-container .red-player-c .bottom-control .button-b-menu {
+	height: 33px;
+	width: 39px;
+}
+
+#youtube-watch #player-container .red-player-c .bottom-control .time-bar {
+	height: 19px;
+}
+
+#youtube-watch #player-container .red-player-c .bottom-control .time-bar-b {
+	background-color: rgb(255 255 255 / 45%);
+	height: 4px;
+	border-radius: 3px;
+}
+
+#youtube-watch #player-container .red-player-c .bottom-control .time-bar-h {
+	background-color: rgb(255, 0, 0);
+	border-radius: 3px;
+	width: 10%;
+}
+
+#youtube-watch #player-container .red-player-c .bottom-control .time-bar-c {
+	background-color: rgb(255, 0, 0);
+	width: 14px;
+	border-radius: 50%;
+	height: 14px;
+	right: -7px;
+	top: -5px;
+}
+
+#youtube-watch #player-container .red-player-c .bottom-control .selector {
+}
+
+#youtube-watch #player-container .red-player-c .bottom-control .selector svg {
+	fill: #fff
+}
+
+#youtube-watch #player-container .btn-play,
+#youtube-watch #player-container .btn-pause,
+#youtube-watch #player-container .btn-next,
+#youtube-watch #player-container .time-bar {
+	z-index: 100;
+}
+
+
+#youtube-watch .z-100 {
+	z-index: 100;
+}
+
+#youtube-watch .z-99 {
+	z-index: 99;
+}
+
+#youtube-watch #player-container .bi.bi-play,
+#youtube-watch #player-container .bi.bi-pause {
+	fill: #fff;
+	width: 48px;
+	height: 48px;
+}
+
+#youtube-watch #player-container .bi.bi-arrow-repeat {
+	fill: #fff;
+	width: 38px;
+	height: 38px;
+}
+
+#youtube-watch #player-container .bi.bi-chevron-right {
+	fill: #fff;
+	width: 28px;
+	height: 28px;
+}
+
+@media (min-width: 416px) {
+	#youtube-watch #player-container .bi.bi-play,
+	#youtube-watch #player-container .bi.bi-pause {
+		width: 68px;
+		height: 68px;
+	}
+
+	#youtube-watch #player-container .bi.bi-arrow-repeat {
+		width: 58px;
+		height: 58px;
+	}
+
+	#youtube-watch #player-container .bi.bi-chevron-right {
+		fill: #fff;
+		width: 38px;
+		height: 38px;
+	}
+}
+
+@media (min-width: 996px) {
+	#youtube-watch #player-container .bi.bi-play,
+	#youtube-watch #player-container .bi.bi-pause {
+		width: 80px;
+		height: 80px;
+	}
+
+	#youtube-watch #player-container .bi.bi-arrow-repeat {
+		width: 70px;
+		height: 70px;
+	}
+
+	#youtube-watch #player-container .bi.bi-chevron-right {
+		fill: #fff;
+		width: 50px;
+		height: 50px;
+	}
+}
+
+#youtube-watch #player-container.fullscreen, #youtube-watch #player-container.fullscreen .red-player-c {
+	left: 0;
+	right: 0;
+	top: 0;
+	min-height: 100vh;
+	bottom: 0;
+	position: fixed !important;
+	padding-top: unset !important;
+}
+
+#youtube-watch #player-container.fullscreen .red-player-c .bottom-control {
+	bottom: 19px !important;
+}
+
+/*END PLAYER*/
+
+#youtube-watch .video-info .title {
+	font-size: 20px;
+	margin-bottom: 15px;
+	font-weight: bold;
+}
+
+#youtube-watch .video-info .time {
+	font-size: 13px;
+	color: #818181;
+}
+
+#youtube-watch .video-info .description {
+	font-size: 14px;
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+}
+
+/*BEGIN RELATED VIDEOS*/
+#app-youtube .link-related {
+	color: #555;
+	text-decoration: unset;
+}
+
+#app-youtube .related-item {
+	margin-bottom: 20px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+#app-youtube .related-item .details {
+	padding: 5px 10px;
+}
+
+#app-youtube .related-item .details .title {
+	margin: 0;
+	font-size: 14px
+}
+
+@media (max-width: 970px) {
+	#app-youtube #video-related {
+		padding: 0 !important;
+	}
+}
+
+/*END RELATED VIDEOS*/
+

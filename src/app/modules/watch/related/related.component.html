@@ -1,0 +1,12 @@
+<div id="related-container">
+	<a class="link-related" *ngFor="let item of items" routerLink="/watch/{{item.id}}" (click)="onclick(item)">
+		<div class="related-item shadow">
+			<div class="img">
+				<img class="w-100" [lazyLoad]="item.thumbnail" alt="">
+			</div>
+			<div class="details">
+				<div class="title">{{ item.title }}</div>
+			</div>
+		</div>
+	</a>
+</div>
