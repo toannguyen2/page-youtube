@@ -1,0 +1,76 @@
+<div class="container mt-4">
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"></li>
+			<li class="breadcrumb-item active">Tools</li>
+			<li class="breadcrumb-item active" aria-current="page">Youtube</li>
+		</ol>
+	</nav>
+</div>
+<div class="container text-center title-app">
+	<span class="text-danger">Youtube</span> - <span class="text-danger">Red</span>Gateway
+</div>
+<div class="container bg-white shadow rounded-3 p-2 mt-4">
+	<div class="position-relative search-box m-auto">
+		<form class="fx1 w-100" [formGroup]="formSearch" (ngSubmit)="onSubmit()">
+			<div class="input-group">
+				<input (focus)="onFocus()" [formControl]="searchFormControl"
+					   (input)="onInput()" type="text"
+					   class="form-control" placeholder="Tên video hoặc URL"/>
+				<button *ngIf="showSuggest" class="btn btn-danger btn-grad btn-grad-close" (click)="onClose()">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+						<path fill-rule="evenodd" clip-rule="evenodd"
+							  d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+						<path fill-rule="evenodd" clip-rule="evenodd"
+							  d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+					</svg>
+				</button>
+				<button class="btn btn-primary btn-grad btn-grad-search" (click)="onSubmit()">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+						<path
+							d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+					</svg>
+				</button>
+			</div>
+		</form>
+		<div *ngIf="showSuggest" class="rounded-3 position-absolute bg-white shadow popup-suggest">
+			<div class="suggest-item" *ngFor="let suggest of suggests" (click)="toUrlSearch(suggest)">
+				{{ suggest }}
+			</div>
+		</div>
+	</div>
+
+	<div class="search-results" id="search-results">
+		<a class="link-result" *ngFor="let item of items" routerLink="/watch/{{item.id}}">
+			<div>
+				<div class="search-result shadow d-flex">
+					<div class="img">
+						<div class="thumb">
+							<img [lazyLoad]="item.thumbnail" alt="">
+						</div>
+					</div>
+					<div class="details d-flex flex-column">
+						<div>
+							<div class="title">{{ item.title }}</div>
+						</div>
+						<div class="mt-auto info" style="font-size: 12.5px">
+							<span>({{ item.time }})</span> - <span>({{ item.view }})</span> - <span>({{ item.publicAt }}
+							)</span>
+						</div>
+						<div class="owner mt-auto d-flex">
+							<div class="owner-thumb">
+								<img [lazyLoad]="item.ownerThumbnail">
+							</div>
+							<div class="owner-details d-flex align-items-center">
+								<div class="title">{{ item.ownerName }}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</a>
+		<div *ngIf="loading" class="text-center p-3">
+			<div class="spinner-border" role="status"></div>
+		</div>
+	</div>
+</div>

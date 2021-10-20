@@ -1,13 +1,117 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PageYoutube</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta http-equiv="content-language" content="vi">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <title>Page @@ Youtube</title>
+
+	<base href="/" />
+<!--	<base href="/tools/youtube/">-->
+
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+  <!-- Styles -->
+  <style>
+    html, body {
+      background-color: #f8f8f8 !important;
+      color: #636b6f;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 100;
+      margin: 0;
+    }
+
+    body {
+      padding-bottom: 30px;
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .flex-center {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    .position-ref {
+      position: relative;
+    }
+
+    .flex-column {
+      flex-direction: column;
+    }
+
+    .shadow {
+      box-shadow: 0px 0px 7px -2px rgb(0 0 0 / 15%);
+    }
+
+    .title {
+      font-size: 20px;
+      margin-bottom: 15px
+    }
+
+    .card-login {
+      padding: 15px;
+      width: 100%;
+      max-width: 500px;
+      background: #fff;
+      border-radius: 6px;
+    }
+
+    .form-control {
+      font-size: 0.95rem;
+    }
+
+  </style>
 </head>
 <body>
-  <app-root></app-root>
+<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      Home
+    </a>
+    <div class="btn-group">
+      <button id="btnUserMini" class="navbar-toggler" type="button" data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="btnUserMini">
+        <li>
+          <a class="dropdown-item" href="/login">Login</a>
+        </li>
+        <li>
+          <a class="dropdown-item" href="/register">Register</a>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <!-- Left Side Of Navbar -->
+      <ul class="navbar-nav me-auto">
+
+      </ul>
+
+      <!-- Right Side Of Navbar -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="app-youtube"></div>
 </body>
 </html>

@@ -1,0 +1,102 @@
+<div class="red-player-c position-absolute w-100 top-0 left-0 no-select">
+	<div *ngIf="!isShowMedia" class="poster top-0 w-100 position-absolute"
+		 [ngStyle]="{'background-image': 'url(' + poster + ')'}"></div>
+	<video #video *ngIf="isShowMedia" autopictureinpicture autoplay webkit-playsinline="" playsinline=""
+		   x-webkit-airplay="allow" class="w-100 h-100 position-absolute top-0 left-0">
+		<source [src]="src">
+	</video>
+	<div class="position-absolute w-100 top-0 left-0 h-100 z-99" (click)="onClickToPlayer()"></div>
+	<div *ngIf="isShowControls"
+		 class="control-container position-absolute w-100 h-100 top-0 left-0 d-flex align-items-center">
+		<div class="top-control"></div>
+		<div class="center-control w-100 d-flex">
+			<div class="d-flex fx1 align-items-center justify-content-center"></div>
+			<div class="d-flex fx1 align-items-center justify-content-center">
+				<div *ngIf="!refresh && !isPlayer"
+					 class="btn-play d-flex align-items-center justify-content-center z-100"
+					 (click)="clickPlay()">
+					<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-play" viewBox="0 0 16 16">
+						<path
+							d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+					</svg>
+				</div>
+				<div *ngIf="!refresh && isPlayer"
+					 class="btn-pause d-flex align-items-center justify-content-center z-100"
+					 (click)="clickPause()">
+					<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-pause" viewBox="0 0 16 16">
+						<path
+							d="M6 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"/>
+					</svg>
+				</div>
+				<div *ngIf="refresh" class="btn-pause d-flex align-items-center justify-content-center z-100"
+					 (click)="clickRefresh()">
+					<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+						<path
+							d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+						<path fill-rule="evenodd"
+							  d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+					</svg>
+				</div>
+			</div>
+			<div class="d-flex fx1 align-items-center justify-content-center">
+				<div class="btn-next d-flex align-items-center justify-content-center z-100" (click)="clickNext()">
+					<svg xmlns="http://www.w3.org/2000/svg" class="bi bi-chevron-right" viewBox="0 0 16 16">
+						<path fill-rule="evenodd"
+							  d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+					</svg>
+				</div>
+			</div>
+		</div>
+		<div class="bottom-control d-flex w-100 flex-column">
+			<div class="w-100 ps-3 pe-3">
+				<div #timeBarContainer
+					 (mousedown)="onMouseDownTimeBar($event)"
+					 (touchstart)="onTouchDownTimeBar($event)"
+					 class="time-bar position-relative d-flex w-100 align-items-center z-100">
+					<div #timeBarElement class="time-bar-b position-relative w-100 pe-none">
+						<div class="time-bar-h position-relative h-100 pe-none" [ngStyle]="{'width': timeBar + '%'}">
+							<div class="time-bar-c position-absolute pe-none"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex w-100 ps-3 pe-3">
+				<div class="time-info d-flex align-items-center z-100 no-select">
+					<span>{{currentTime}}</span>
+					<span style="white-space: pre-wrap;"> / </span>
+					<span>{{totalTime}}</span>
+				</div>
+				<div class="selector ms-auto d-flex">
+					<div class="button-b-menu d-flex justify-content-center align-items-center z-100"
+						 (click)="clickRepeat()">
+						<svg [ngStyle]="{'fill': repeat ? '#f00' : '#fff'}" xmlns="http://www.w3.org/2000/svg"
+							 width="23" height="23" viewBox="0 0 16 16">
+							<path
+								d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+							<path fill-rule="evenodd"
+								  d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+						</svg>
+					</div>
+					<div class="button-b-menu d-flex justify-content-center align-items-center z-100"
+						 (click)="clickPiP()">
+						<svg [ngStyle]="{'fill': pip ? '#f00' : '#fff'}" xmlns="http://www.w3.org/2000/svg"
+							 width="20" height="20"
+							 viewBox="0 0 16 16">
+							<path
+								d="M0 3.5A1.5 1.5 0 0 1 1.5 2h13A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 12.5v-9zM1.5 3a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-13z"/>
+							<path
+								d="M8 8.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-3z"/>
+						</svg>
+					</div>
+					<div class="button-b-menu d-flex justify-content-center align-items-center z-100"
+						 (click)="clickFullscreen()">
+						<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 16 16">
+							<path
+								d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z"/>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

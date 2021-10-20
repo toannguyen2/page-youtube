@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+	production: false,
+	API_HOST: 'http://127.0.0.1:9899',
+	API_SUGGEST: '/tools/youtube/suggest',
+	API_SEARCH: '/tools/youtube/search',
+	API_WATCH: '/tools/youtube/watch',
+	API_LIST_RELATED: '/tools/youtube/list-related',
+	API_DOWNLOAD: '/api/v1/tools/youtube/download',
 };
 
 /*
